@@ -40,6 +40,13 @@ class App extends Component {
 };
 
 
+listItemClick = venue => {
+  const marker = this.state.markers.find(marker => marker.id === venue.id);
+  this.handleMarkerClick(marker);
+
+  console.log(venue);
+}
+
   componentWillMount = () => {
     SquareAPI.search({
       near: "New York, NY",

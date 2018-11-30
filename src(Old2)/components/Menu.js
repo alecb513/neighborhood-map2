@@ -11,9 +11,9 @@ class Menu extends Component {
   };
   render() {
     return (
-      <div style={this.sideBarStyle}>
+      <div className="menu"style={this.sideBarStyle}>
         <h1>Filter Restaurants</h1>
-        <input type="text" />
+        <input type="search" id='search-bar'/>
         <div>
           <ul
             style={{
