@@ -11,9 +11,9 @@ class Menu extends Component {
   };
   render() {
     return (
-      <div style={this.sideBarStyle}>
+      <div className="menu"style={this.sideBarStyle}>
         <h1>Filter Restaurants</h1>
-        <input type="text" />
+        <input type="search" id='search'/>
         <div>
           <ul
             style={{
@@ -27,7 +27,8 @@ class Menu extends Component {
             }}>
             {this.props.filteredVenues.map(venue => {
               //console.log(venue);
-              return <li key={venue.name}>{venue.name}</li>;
+              return <li key={venue.name}>{venue.name}  listItemClick={this.props.listItemClick}</li>;
+               
             })}
           </ul>
         </div>
