@@ -6,6 +6,9 @@ import Menu from "./components/Menu";
 
 import SquareAPI from "./API/index";
 
+
+
+
 class App extends Component {
   constructor() {
     super();
@@ -35,25 +38,29 @@ class App extends Component {
     SquareAPI.getVenueDetails(marker.id).then(res => {
     const newVenue = Object.assign(venue, res.response.venue);
     this.setState({venues: Object.assign(this.state.venues, newVenue)});
-    console.log(newVenue);
+    console.log(marker);
   });
 };
 
-  handleListItemClick = venue => {
-    const marker = this.state.markers.find(marker => marker.id === venue.id);
-    this.handleMarkerClick(marker);
-    console.log(venue + ' click working');
-  }
+  //handleListItemClick = venue => {
+    //const marker = this.state.markers.find(marker => marker.id === venue.id);
+    //this.handleMarkerClick(marker);
+    //console.log(venue + ' click working');
+  //}
+
+  
+
+
 
   componentWillMount() {
     SquareAPI.search({
       near: "New York, NY",
       query: "Pizza",
-      limit: 1 // change to 10
+      limit: 10 // change to 10
     }).then(results => {
-      console.log(results);
+      //console.log(results);
       const { venues } = results.response;
-      console.log(venues);
+      //console.log(venues);
       const { center } = results.response.geocode.feature.geometry;
       console.log(center);
       const markers = venues.map(venue => {
@@ -74,10 +81,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Menu {...this.state} filteredVenues={this.state.filteredVenues} handleListItemClick={this.handleListItemClick} />
+        <Menu {...this.state} handleListItemClick={this.handleListItemClick} filteredVenues={this.state.filteredVenues}/>
         <Map {...this.state} handleMarkerClick={this.handleMarkerClick}/>
       </div>
     );
   }
 }
 export default App;
+let menuItem = document.querySelectorAll('li');
+let i;
+for(i=0;i<menuItem.length;i++){
+  console.log(i);
+}

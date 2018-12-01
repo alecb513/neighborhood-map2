@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+//import MenuItem from "./components/MenuItem";
+
+
+
 
 class Menu extends Component {
-  sideBarStyle = {
-   
-  }
+
   render() {
     return (
       <div style={this.sideBarStyle}className="menu">
@@ -20,9 +22,11 @@ class Menu extends Component {
               padding: 0,
               marginTop: "1.5rem"
             }}>
+           
             {this.props.filteredVenues.map(venue => {
               //console.log(venue);
-              return <li key={venue.name}>{venue.name} onClick={() => this.props.handleListItemClick(this.props)}{this.props.name}</li>;
+              return <li key={venue.name}>{venue.name}</li>
+             
             })}
           </ul>
         </div>
