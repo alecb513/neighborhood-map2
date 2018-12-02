@@ -13,30 +13,43 @@ const MyMapComponent = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap
       defaultZoom={8}
+      onClick={() => props.closeInfoWindow()}
       zoom={props.zoom}
       center={{ lat: props.center.lat, lng: props.center.lng }}>
-      {props.markers &&
-        props.markers
+      {props.filteredMarkers &&
+        props.filteredMarkers
           .filter(marker => marker.isVisible)
           .map((marker, idx) => {
-            
-            const venueInfo = props.venues.find(venue => venue.id === marker.id);
-            
-            return <Marker key={idx}
-            position={{ lat: marker.lat, lng: marker.lng }}
-            onClick={() => props.handleMarkerClick(marker)}>
+            const venueInfo = props.venues.find(
+              venue => venue.id === marker.id
+            );
 
-              {marker.isOpen && 
-                venueInfo.bestPhoto && (
-                <InfoWindow>
-                  <React.Fragment>
-                    <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`}alt={venueInfo}/>
-                  <p>{venueInfo.name}}</p>
-                  </React.Fragment>
-                </InfoWindow>
-              )}
-            </Marker>
-      })}
+            return (
+              <Marker
+                key={idx}
+                position={{ lat: marker.lat, lng: marker.lng }}
+                animation={
+                  props.activeMarker === marker.id
+                    ? window.google.maps.Animation.BOUNCE
+                    : null
+                }
+                onClick={() => props.handleMarkerClick(marker)}>
+                {marker.isOpen && venueInfo.bestPhoto && (
+                  <InfoWindow onCloseClick={() => props.closeInfoWindow()}>
+                    <React.Fragment>
+                      <img
+                        src={`${venueInfo.bestPhoto.prefix}200x200${
+                          venueInfo.bestPhoto.suffix
+                        }`}
+                        alt={venueInfo}
+                      />
+                      <p>{venueInfo.name}}</p>
+                    </React.Fragment>
+                  </InfoWindow>
+                )}
+              </Marker>
+            );
+          })}
     </GoogleMap>
   ))
 );

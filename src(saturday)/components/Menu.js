@@ -1,17 +1,13 @@
 import React, { Component } from "react";
 
+
 class Menu extends Component {
+
   render() {
     return (
-      <div style={this.sideBarStyle} className="menu">
+      <div style={this.sideBarStyle}className="menu">
         <h1>Filter Restaurants</h1>
-        <input
-          type="search"
-          id="search"
-          placeholder="Filter Venues"
-          value={this.props.value}
-          onChange={e => this.props.handleQuery(e.target.value)}
-        />
+        <input type="search" id="search" placeholder="Filter Venues"/>
         <div>
           <ul
             style={{
@@ -23,15 +19,11 @@ class Menu extends Component {
               padding: 0,
               marginTop: "1.5rem"
             }}>
+           
             {this.props.filteredVenues.map(venue => {
               //console.log(venue);
-              return (
-                <li
-                  key={venue.name}
-                  onClick={() => this.props.handleListItemClick(venue)}>
-                  {venue.name}
-                </li>
-              );
+              return <li key={venue.name}>{venue.name}</li>;
+             
             })}
           </ul>
         </div>
