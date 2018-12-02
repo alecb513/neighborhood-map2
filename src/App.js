@@ -42,11 +42,11 @@ class App extends Component {
   });
 };
 
-  //handleListItemClick = venue => {
-    //const marker = this.state.markers.find(marker => marker.id === venue.id);
-    //this.handleMarkerClick(marker);
+  handleListItemClick = venue => {
+    const marker = this.state.markers.find(marker => marker.id === venue.id);
+    this.handleMarkerClick(marker);
     //console.log(venue + ' click working');
-  //}
+  }
 
   
 
@@ -82,6 +82,7 @@ class App extends Component {
     return (
       <div className="App">
         <Menu {...this.state} handleListItemClick={this.handleListItemClick} filteredVenues={this.state.filteredVenues}/>
+       
         <Map {...this.state} handleMarkerClick={this.handleMarkerClick}/>
       </div>
     );

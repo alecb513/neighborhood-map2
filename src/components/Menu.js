@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-//import MenuItem from "./components/MenuItem";
-
-
 
 
 class Menu extends Component {
@@ -25,7 +22,7 @@ class Menu extends Component {
            
             {this.props.filteredVenues.map(venue => {
               //console.log(venue);
-              return <li key={venue.name}>{venue.name}</li>
+              return <li key={venue.name}>{venue.name}</li>;
              
             })}
           </ul>
