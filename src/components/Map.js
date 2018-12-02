@@ -12,6 +12,7 @@ import {
 const MyMapComponent = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap
+    
       defaultZoom={8}
       onClick={() => props.closeInfoWindow()}
       zoom={props.zoom}
@@ -61,12 +62,14 @@ export default class Map extends Component {
   render() {
     return (
       <MyMapComponent
+        
         {...this.props}
         isMarkerShown
         googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBz491EHlYacMDqaP4b_nHSskvEfzLxj7c"
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `100vh` }} />}
         mapElement={<div style={{ height: `100%` }} />}
+        
       />
     );
   }

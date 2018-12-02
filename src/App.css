@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+ 
 }
 
 
@@ -16,10 +17,9 @@
   padding-right:5px;
 
   z-index: 100;
-
-
-  
 }
+
+
 .menu li {
   color: white;
   border-style: solid;
@@ -27,4 +27,12 @@
   border-color: white;
   margin: 5px 0px 5px 0px;
   cursor: pointer;
+}
+
+@media screen and (max-width : 500px) {
+.App{
+  display: relative;
+
+}
+
 }
