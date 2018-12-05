@@ -8,7 +8,9 @@ import {
   InfoWindow
 } from "react-google-maps";
 //import { renderComponent } from 'recompose'; //<= WAS IN TURORIAL BUT NOT WORKING
-
+function gm_authFailure() {
+  prompt("Run for the hills, Google is Down!!!")
+}
 const MyMapComponent = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap

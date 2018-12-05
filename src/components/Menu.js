@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 
-class Menu extends Component {
+class Menu extends Component {  
   render() {
+
+    let firstTab = 0;
+    
     return (
       <div style={this.sideBarStyle} className="menu">
         <h1>Filter Restaurants</h1>
@@ -13,7 +16,8 @@ class Menu extends Component {
           onChange={e => this.props.handleQuery(e.target.value)}
         />
         <div>
-          <ul
+          <ul 
+            tabIndex={firstTab}
             style={{
               listStyleType: "none",
               margin: "0 auto",
@@ -27,6 +31,7 @@ class Menu extends Component {
               //console.log(venue);
               return (
                 <li
+                  tabIndex={firstTab++}
                   key={venue.name}
                   onClick={() => this.props.handleListItemClick(venue)}>
                   {venue.name}

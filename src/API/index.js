@@ -1,4 +1,7 @@
 //API/index.js
+
+let message = "API is DOWN!"
+
 class Helper {
   static baseURL() {
     return "https://api.foursquare.com/v2";
@@ -37,7 +40,7 @@ class Helper {
         urlPrams
       )}`,
       requestData
-    ).then(res => res.json());
+    ).then(res => res.json()).catch(message => prompt(message));
   }
 }
 
