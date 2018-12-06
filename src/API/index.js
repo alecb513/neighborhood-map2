@@ -1,6 +1,6 @@
 //API/index.js
 
-let message = "API is DOWN!"
+
 
 class Helper {
   static baseURL() {
@@ -36,11 +36,12 @@ class Helper {
     };
 
     return fetch(
+      
       `${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(
         urlPrams
       )}`,
       requestData
-    ).then(res => res.json()).catch(message => prompt(message));
+    ).then(res => res.json()).catch(message => prompt("API I Down"));
   }
 }
 

@@ -9,9 +9,10 @@ import {
 } from "react-google-maps";
 //import { renderComponent } from 'recompose'; //<= WAS IN TURORIAL BUT NOT WORKING
 function gm_authFailure() {
-  prompt("Run for the hills, Google is Down!!!")
+  alert("Run for the hills, Google is Down!!!")
 }
 const MyMapComponent = withScriptjs(
+  
   withGoogleMap(props => (
     <GoogleMap
     
@@ -26,7 +27,7 @@ const MyMapComponent = withScriptjs(
             const venueInfo = props.venues.find(
               venue => venue.id === marker.id
             );
-
+           
             return (
               <Marker
                 key={idx}
@@ -58,10 +59,14 @@ const MyMapComponent = withScriptjs(
 );
 
 export default class Map extends Component {
+  
   componentDidMount = () => {
     console.log(this.props);
   };
   render() {
+    gm_authFailure.onerror = function() {
+      gm_authFailure(); 
+    };
     return (
       <MyMapComponent
         
@@ -76,3 +81,4 @@ export default class Map extends Component {
     );
   }
 }
+
